@@ -3,6 +3,7 @@ import Todo from '../../components/Todo/Todo';
 import "./TodoList.css";
 import TodoDetail from '../../components/TodoDetail/TodoDetail';
 import NewTodo from './NewTodo/NewTodo';
+import {NavLink} from 'react-router-dom'
 
 class TodoList extends Component{
     //This acts as if this.state = {...} was inside constructor()
@@ -34,10 +35,14 @@ class TodoList extends Component{
         });
         return (
             <div className = 'TodoList'>
-             <div className = 'title'>{this.props.title}</div>
-             <div className = 'todos'>{todos}</div>
+             <div className = 'title'>
+                 {this.props.title}
+                 </div>
+             <div className = 'todos'>
+                 {todos}
+                 </div>
              {todoDetail}
-             <NewTodo />
+             <NavLink to='/new-todo' exact>New Todo</NavLink>
             </div>
         );
     }

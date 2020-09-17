@@ -7,7 +7,17 @@ class NewTodo extends Component{
         content: '',
         submitted: false,
     }
+    postTodoHandler = () => {
+        const data =
+        { title: this.state.title, content: this.state.content};
+        alert('Submitted\n' + data.title+ '\n' +data.content);
+        this.setState({submitted: true});
+        this.props.history.push('/todos');
+    }
     render(){
+        if (this.state.submitted) {
+            return <Redirect to='/todos/' />
+        }
         return(
             <div className="NewTodo">
                 <h1>Add a Todo</h1>
@@ -17,7 +27,7 @@ class NewTodo extends Component{
                 <label>Content</label>
                 <textarea rows="4" type="text" value={this.state.content}
                     onChange={(event)=> this.setState({content: event.target.value})}/>
-                    <button onClick={() => alert('Submitted')}>Submit</button>
+                    <button onClick={() => this.postTodoHandler()}>Submit</button>
             </div>
         );
     }
