@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './NewTodo.css';
+import {Redirect} from 'react-router-dom'
 
 class NewTodo extends Component{
     state = {
